@@ -79,6 +79,8 @@ python app.py
 ## 📊 Expected Output
 
 The script will display an OLS regression summary similar to:
+
+```
                             OLS Regression Results
 ==============================================================================
 Dep. Variable:                      y   R-squared:                       0.534
@@ -112,6 +114,9 @@ Kurtosis:                       2.616   Cond. No.                         225.
 ==============================================================================
 
 Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+```
+
 And a saved model file: `diabetes_ols_model.pkl`
 
 ---
@@ -138,17 +143,3 @@ The Dockerfile uses:
 - **Entry Point**: Runs `python app.py` automatically
 
 ---
-
-## 🔧 Troubleshooting
-
-### Issue: Permission denied when saving model
-
-**Solution**: Ensure the mounted volume has write permissions:
-
-```bash
-docker run --rm -v $(pwd):/app -u $(id -u):$(id -g) diabetes-ols:latest
-```
-
-### Issue: Docker build fails
-
-**Solution**: Check that you have the latest Docker version and sufficient disk space.
